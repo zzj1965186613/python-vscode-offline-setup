@@ -1,0 +1,63 @@
+# Python + VS Code 离线环境安装包（Windows / macOS）
+
+为学生批量装数据分析环境准备的**全离线安装包**：Python、VS Code、常用库和
+VS Code 扩展都已提前下载好，全程不需要联网，特别适合网络不稳定的教室或酒店环境。
+
+## 快速开始
+
+1. 到本仓库 [Releases](https://github.com/zzj1965186613/python-vscode-offline-setup/releases)
+   页面下载对应平台的 zip：
+
+   | 文件 | 平台 | 大小 |
+   |---|---|---|
+   | `环境准备_Windows.zip` | Windows（64 位） | 约 358 MB |
+   | `环境准备_mac.zip` | macOS（苹果芯片 / Intel） | 约 773 MB |
+
+2. 解压后按 `离线安装说明.md` 的步骤操作即可，学生电脑全程不联网。
+   核心流程只有三步：装 Python → 双击一键安装脚本（自动从离线包装库）→ 运行 `检查环境.py` 看到「环境 OK」。
+
+## 仓库里有什么
+
+| 文件 | 说明 |
+|---|---|
+| `检查环境.py` | 环境自检脚本：Python 版本、库版本、画图冒烟测试，全绿显示「环境 OK」 |
+| `一键安装.bat` | Windows 联网安装路线（走清华镜像，网络好时可选） |
+| `一键安装_离线.bat` | Windows 离线装库：pandas / numpy / matplotlib |
+| `安装扩展_离线.bat` | Windows 离线装 VS Code 扩展（Python、Pylance、中文语言包） |
+| `一键安装_离线.command` | macOS 离线装库（自动识别苹果芯片 / Intel 芯片） |
+| `安装扩展_离线.command` | macOS 离线装 VS Code 扩展 |
+| `离线安装说明.md` | 完整使用说明（老师准备、学生安装步骤、常见坑） |
+
+Python 安装程序、VS Code 安装程序、离线 wheel 库等大文件放在 Release 的 zip 里
+（GitHub 单文件 100 MB 限制，Release 附件没有这个问题）。
+
+## 版本约定
+
+- Python **3.13.9**（Windows 64 位安装包 + macOS 通用安装包）
+- 数据分析库：**numpy 2.3.4 / pandas 3.1.0 / matplotlib 3.10.7**
+- VS Code **1.144.1**
+
+离线 wheel 包按 Python 3.13 构建，学生必须装包内的 Python 版本——统一版本是
+离线方案能成立的命门。想更新版本时，在联网电脑上用
+[离线安装说明.md](离线安装说明.md) 第六节的 `pip download` 命令重新生成。
+
+## 目录结构（zip 解压后）
+
+```
+环境准备/
+├── 检查环境.py
+├── 一键安装.bat              # Windows 联网路线（可选）
+├── 离线安装说明.md
+└── 安装包/
+    ├── python-3.13.9-...     # Python 安装程序
+    ├── VSCode...             # VS Code 安装程序
+    ├── wheels.../            # 离线库（按平台）
+    ├── vscode-extensions/    # 扩展离线包（两平台共用）
+    ├── 一键安装_离线.bat / .command
+    └── 安装扩展_离线.bat / .command
+```
+
+## 常见问题
+
+见 [离线安装说明.md](离线安装说明.md) 第七节，覆盖了 6 类常见坑：
+PATH 没勾、Python 版本对不上、中文方框、调试器选择、语言包不生效、mac 旧版 Python。

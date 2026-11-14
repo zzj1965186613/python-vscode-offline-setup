@@ -33,7 +33,7 @@ fi
 
 echo "当前 Python：$($PY --version)，芯片：$ARCH"
 echo "正在从离线包安装（不联网）..."
-$PY -m pip install --no-index --find-links="$WHEELS" pandas numpy matplotlib
+$PY -m pip install --no-index --find-links="$WHEELS" pandas numpy matplotlib jupyterlab notebook ipykernel
 
 if [ $? -ne 0 ]; then
   echo "[错误] 安装失败。请把报错截图发给老师。"

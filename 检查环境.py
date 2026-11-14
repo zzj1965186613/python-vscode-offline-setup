@@ -44,6 +44,16 @@ if problems:
     print('解决方法：双击「安装包\\一键安装_离线.bat」（离线，推荐），或「一键安装.bat」（联网）。')
     sys.exit(1)
 
+# Jupyter 检测（Notebook 上课形式需要；缺了不致命，先提示）
+jupyter_missing = []
+for name in ['jupyterlab', 'notebook', 'ipykernel']:
+    try:
+        mod = __import__(name)
+        print(f'{name}:', getattr(mod, '__version__', '?'), ' OK')
+    except ImportError:
+        print(f'{name}: 未安装 ✗（Notebook 形式需要）')
+        jupyter_missing.append(name)
+
 # 冒烟测试：真的画一张图试试，光装好还不够
 try:
     import pandas as pd
@@ -63,4 +73,9 @@ except Exception as e:
     print('\n画图冒烟测试失败：', repr(e))
     sys.exit(1)
 
-print('\n环境 OK，可以上课了。')
+if jupyter_missing:
+    print('\n提示：缺少 Jupyter（', ' '.join(jupyter_missing), '）。'
+          '若用 Notebook 形式上课，请先运行「安装包\\一键安装_离线.bat」补齐。')
+    print('\n环境 OK，可以上课了（Notebook 形式需先补装 Jupyter）。')
+else:
+    print('\n环境 OK，可以上课了。')

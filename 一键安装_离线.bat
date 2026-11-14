@@ -20,7 +20,7 @@ if not exist "%~dp0wheels" (
 )
 python --version
 echo 正在从离线包安装（不联网）...
-python -m pip install --no-index --find-links="%~dp0wheels" pandas numpy matplotlib
+python -m pip install --no-index --find-links="%~dp0wheels" pandas numpy matplotlib jupyterlab notebook ipykernel
 if errorlevel 1 (
     echo.
     echo [错误] 安装失败。常见原因：Python 版本不是 3.13

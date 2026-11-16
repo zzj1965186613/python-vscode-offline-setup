@@ -1,4 +1,4 @@
-# Python + VS Code 离线环境安装包（Windows / macOS）
+﻿# Python + VS Code 离线环境安装包（Windows / macOS）
 
 为学生批量装数据分析环境准备的**全离线安装包**：Python、VS Code、pandas / numpy / matplotlib、
 **Jupyter（Notebook 上课形式）** 和 VS Code 扩展都已提前下载好，全程不需要联网，
@@ -11,8 +11,8 @@
 
    | 文件 | 平台 | 大小 |
    |---|---|---|
-   | `env-prep-win64.zip` | Windows（64 位） | 约 420 MB |
-   | `env-prep-mac.zip` | macOS（苹果芯片 / Intel） | 约 890 MB |
+   | `env-prep-win64.zip` | Windows（64 位） | 约 440 MB |
+   | `env-prep-mac.zip` | macOS（苹果芯片 / Intel） | 约 930 MB |
 
    下载直链（永远指向最新版）：
    - <https://github.com/zzj1965186613/python-vscode-offline-setup/releases/latest/download/env-prep-win64.zip>

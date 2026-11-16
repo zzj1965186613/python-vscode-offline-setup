@@ -16,13 +16,19 @@ if sys.version_info < (3, 10):
     sys.exit(1)
 
 # VS Code 检测（仅提示，不影响 Python 数据分析）
+import os
 import shutil
 import subprocess
-if shutil.which('code'):
+if shutil.which('code') or shutil.which('code.cmd'):
     try:
-        r = subprocess.run(['code', '--version'], capture_output=True,
-                           text=True, timeout=15)
-        ver = r.stdout.splitlines()[0] if (r.returncode == 0 and r.stdout) else '未知'
+        # Windows 上 code 是 code.cmd，subprocess 直接调用会失败，需走 shell
+        if os.name == 'nt':
+            r = subprocess.run('code --version', shell=True, capture_output=True,
+                               text=True, timeout=15)
+        else:
+            r = subprocess.run(['code', '--version'], capture_output=True,
+                               text=True, timeout=15)
+        ver = r.stdout.splitlines()[0].strip() if (r.returncode == 0 and r.stdout) else '未知'
         print('VS Code：', ver, ' OK')
     except Exception:
         print('VS Code：已安装（版本未知）')
@@ -79,3 +85,5 @@ if jupyter_missing:
     print('\n环境 OK，可以上课了（Notebook 形式需先补装 Jupyter）。')
 else:
     print('\n环境 OK，可以上课了。')
+    print('提示：若在 VS Code 里打开 .ipynb，还需要 Jupyter 扩展'
+          '（离线包已含，跑「安装包\\安装扩展_离线.bat」即可；mac 用 .command）。')
